@@ -1,24 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route } from 'react-router-dom'
+import Navbar from './components/layout/Navbar';
+import Alert from './components/layout/Alert';
+import HomePage from './pages/HomePage';
+import AboutPage from './pages/AboutPage';
+import NotFound from './pages/NotFound';
+import User from './pages/User';
+import { GithubProvider } from './context/github/GithubContext'
+import { AlertProvider } from './context/alert/AlertContext'
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <GithubProvider>
+      <AlertProvider>
+        <>
+
+          <div className='container'>
+            <Navbar />
+            <main>
+              <Alert />
+              <Routes>
+                <Route exact path='/' element={<HomePage />} />
+                <Route path='/about' element={<AboutPage />} />
+                <Route path='/user/:login' element={<User />} />
+                <Route path='/notfound' element={<NotFound />} />
+                <Route path='/*' element={<NotFound />} />
+              </Routes>
+            </main>
+          </div>
+        </>
+      </AlertProvider>
+    </GithubProvider>
   );
 }
 

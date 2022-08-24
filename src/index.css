@@ -1,13 +1,768 @@
-body {
+* {
+  box-sizing: border-box;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: rgb(64, 64, 64);
+  color: #fff;
+  overflow-x: hidden;
+  clear: both;
+}
+
+.container {
+  max-width: 100%;
+  min-height: 100vh;
+  overflow-y: auto;
+}
+
+/* Navbar page */
+
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  color: #fff;
+  background: rgb(35, 35, 35);
+  width: 100%;
+  height: 70px;
+  padding: 20px 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 90px;
+  z-index: 10000;
+}
+
+main {
+  padding: 10px 80px;
+  font-size: 2rem;
+}
+
+nav .logo {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 2rem;
+  gap: 10px;
+  width: 200px;
+  padding: 5px;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.back-to-search-link {
+  font-size: 2rem;
+  padding: 12px 25px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.back-to-search-link:hover {
+  background-color: #ccc;
+  color: black;
+}
+
+.logo a {
+  text-decoration: none;
+  font-size: 2.5rem;
+  color: #fff;
+  padding-top: 5px;
+}
+
+
+.menu-links {
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.menu-links a {
+  font-size: 2rem;
+  padding: 9px 15px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.menu-links a:hover {
+  background-color: #ccc;
+  color: black;
+}
+
+/* Home page */
+
+
+.home-page {
+  width: 1400px;
+  height: 220vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  padding-bottom: 25%;
+}
+
+
+.home-page input {
+  width: 500px;
+  padding: 14px 20px;
+  font-size: 1.6rem;
+}
+
+.home-page input:focus {
+  outline: none;
+}
+
+.home-page button {
+  padding: 16px 30px;
+  font-size: 1.5rem;
+  border-radius: 0px 6px 6px 0px;
+  background-color: rgb(67, 195, 67);
+  border: rgb(67, 195, 67);
+  color: #fff;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.home-page button:hover {
+  cursor: pointer;
+}
+
+
+/* User search page */
+
+/* Alert-page */
+.alert-page {
+  width: 400px;
+  position: absolute;
+  top: 34%;
+  left: 6%;
+  padding: 2px;
+  margin-bottom: 5px;
+
+  position: relative;
+}
+
+.error {
+  width: 400px;
+  position: absolute;
+  top: 43%;
+  left: 6%;
+}
+
+.error img {
+  width: 27px;
+  height: 27px;
+  border-radius: 50%;
+  margin-top: 10px;
+}
+
+.error-msg {
+  font-size: 2.4rem;
+  color: red;
+  position: absolute;
+  top: 27%;
+  left: 9%;
+}
+
+/* Alert-page => End */
+
+.user-search {
+  width: 1300px;
+  padding: 10px;
+  height: 250px;
+  position: relative;
+  margin-top: -42%;
+}
+
+.user-search form {
+  height: 150px;
+  margin-top: 35px;
+}
+
+.user-search .clear-btn {
+  padding: 16px 40px;
+  font-size: 1.5rem;
+  border-radius: 5px;
+  background-color: rgb(174, 43, 174);
+  border: rgb(174, 43, 174);
+  color: #fff;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  position: absolute;
+  top: 18%;
+  left: 55%;
+}
+
+.user-search .clear-btn:hover {
+  background-color: rgb(127, 18, 127);
+  border: rgb(127, 18, 127);
+}
+
+
+
+/* User results page */
+
+.users {
+  width: 1500px;
+  margin-top: 55%;
+  overflow: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 100px;
+  padding: 10px;
+  margin-left: -100%;
+  overflow: hidden;
+}
+
+.user-main {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  overflow: hidden;
+}
+
+.userItem-main {
+  width: 300px;
+  height: 120px;
+  margin: 15px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 15px;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.user-item .avator {
+  margin-top: 0px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-item .avator img {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.user-item .card-title {
+  margin-top: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+
+/* Single User Page */
+
+.single-user-page {
+  width: 100%;
+  height: 200vh;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+  position: absolute;
+  top: 25%;
+  left: 0%;
+}
+
+.custom-card-image {
+  width: 270px;
+  height: 350px;
+  border-radius: 5px;
+}
+
+.back-to-search-link {
+  width: 15%;
+  padding-bottom: 10px;
+  height: 45px;
+  margin-right: 45%;
+  position: absolute;
+  top: 2%;
+  left: 12%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.personal-profile {
+  width: 300px;
+  position: absolute;
+  top: 8%;
+  left: 10%;
+}
+
+.personal-profile img {
+  width: 100%;
+  border-radius: 10px;
+  opacity: 0.5;
+}
+
+.card-text {
+  position: absolute;
+  top: 76%;
+  left: 7%;
+}
+
+.card-text h2 {
+  font-size: 2.7rem;
+}
+
+.card-text p {
+  font-size: 2rem;
+}
+
+.card-name {
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  position: absolute;
+  top: 6%;
+  left: 33%;
+  padding: 5px;
+}
+
+.card-name h1 {
+  font-size: 3rem;
+}
+
+.card-name .type-badge {
+  background-color: rgba(120, 221, 144, 0.369);
+  color: rgb(14, 211, 14);
+  padding: 5px 20px;
+  border-radius: 30px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.card-name .hireable-badge {
+  background-color: rgba(109, 161, 182, 0.453);
+  color: rgb(132, 216, 249);
+  padding: 5px 20px;
+  border-radius: 30px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.card-action {
+  height: 200px;
+  width: 50%;
+  margin-top: -24%;
+  margin-left: -1%;
+}
+
+.card-action .visit-profile {
+  font-size: 1.7rem;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  border: 2px solid #ccc;
+  position: absolute;
+  top: 18%;
+  left: 33%;
+  margin-bottom: 20px;
+}
+
+.card-action .visit-profile:hover {
+  background-color: #ccc;
+  color: black;
+}
+
+.user-stats {
+  width: 750px;
+  position: absolute;
+  top: 24%;
+  left: 32.5%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+  padding: 5px 10px;
+  border-bottom: 1px solid rgb(125, 125, 125);
+}
+
+.user-stats .stat {
+  border-left: 1px solid rgb(125, 125, 125);
+  width: 400px;
+  padding: 0px 30px;
+  display: flex;
+  justify-self: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.user-stats .stat h3 {
+  word-break: break-all;
+}
+
+/* user-stats2 */
+
+.user-stats2 {
+  width: 1100px;
+  position: absolute;
+  top: 35%;
+  left: 10%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+  padding: 5px 10px;
+  border-bottom: 1px solid rgb(125, 125, 125);
+  overflow: auto;
+}
+
+.user-stats2 .stat2 {
+  border-left: 1px solid rgb(125, 125, 125);
+  width: 400px;
+  padding: 0px 30px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 40px;
+}
+
+.stat2 .followers {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.followers .stat-value {
+  font-size: 2.8rem;
+  font-weight: bold;
+}
+
+.stat2 i {
+  color: purple;
+  font-size: 5rem;
+}
+
+
+/* ReposList page */
+
+
+.repolist-page {
+  width: 600px;
+  position: absolute;
+  top: 46%;
+  left: 12%;
+  padding-bottom: 30px;
+}
+
+
+/* RepoItem Page */
+
+.repo-item {
+  width: 1000px;
+  height: 140px;
+  margin-top: 20px;
+  padding: 20px;
+  background-color: rgb(40, 40, 40);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.repo-item:hover {
+  background-color: rgb(26, 26, 26);
+  cursor: pointer;
+}
+
+.repo-item .repo-item-body .main-badge {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 25px;
+}
+
+.repo-item-body h3 {
+  font-size: 2.3rem;
+}
+
+.repo-item-body h3 a i {
+  padding-right: 10px;
+  padding-bottom: 8px;
+  font-size: 1.7rem;
+}
+
+.repo-item-body .repo-desc {
+  margin-left: 25px;
+  font-size: 1.7rem;
+}
+
+.main-badge {
+  margin-left: 25px;
+}
+
+.main-badge .badge {
+  margin-top: 12px;
+  font-size: 1.7rem;
+}
+
+.main-badge .badge i {
+  padding-right: 10px;
+}
+
+.main-badge .bg-skyblue {
+  background-color: rgba(109, 161, 182, 0.252);
+  color: rgb(132, 216, 249);
+  padding: 4px 10px;
+  border-radius: 30px;
+}
+
+.main-badge .bg-green {
+  background-color: rgba(165, 250, 152, 0.154);
+  color: green;
+  padding: 4px 10px;
+  border-radius: 30px;
+}
+
+.main-badge .bg-red {
+  background-color: rgba(238, 117, 117, 0.242);
+  color: red;
+  padding: 4px 23px;
+  border-radius: 30px;
+}
+
+.main-badge .bg-yellow {
+  background-color: rgba(208, 208, 110, 0.3);
+  color: yellow;
+  padding: 4px 23px;
+  border-radius: 30px;
+}
+
+
+
+
+
+/* Footer */
+/* 
+footer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: gray;
+  padding: 10px;
+}
+
+.footer-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-main svg:hover {
+  fill: white;
+}
+
+.footer-main p {
+  font-size: 1.4rem;
+} */
+
+
+/* About page  */
+
+.about-page {
+  margin-top: 15%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.about-page p {
+  width: 470px;
+  padding: 5px 10px;
+}
+
+.about-page-last-para {
+  margin-bottom: 30px;
+}
+
+.about-page-btn {
+  padding: 8px 15px;
+  background-color: rgb(74, 30, 133);
+  color: #fff;
+  margin-top: 10px;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  transition: all 0.3s ease;
+}
+
+.about-page-btn:hover {
+  background-color: rgb(59, 21, 109);
+}
+
+
+.about-me {
+  margin-bottom: 10px;
+}
+
+
+/* not found page */
+
+.notfoundpage {
+  padding: 10px 0px 20px 20px;
+  margin-top: 15%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.oops {
+  font-size: 6.5rem;
+}
+
+.error-404 {
+  font-size: 3rem;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.back-to-home-btn {
+  background-color: rgb(74, 30, 133);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+.back-to-home-btn:hover {
+  background-color: rgb(59, 21, 109);
+}
+
+
+.back-to-home-btn i {
+  padding-right: 5px;
+}
+
+
+/* Spinner page */
+
+.spinner-page {
+  width: 1300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.spinner-page img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+@media(max-width: 1300px) {
+  .users {
+    width: 1300px;
+    margin-top: 90%;
+    padding-bottom: 50px;
+    text-align: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+
+@media(max-width: 1300px) {
+  .users {
+    width: 1300px;
+    margin-top: 90%;
+    padding-bottom: 50px;
+    text-align: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+
+@media(max-width: 1000px) {
+  .users {
+    width: 1300px;
+    margin-top: 90%;
+    padding-bottom: 50px;
+    text-align: center;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+
+
+@media(max-width: 600px) {
+  nav {
+    padding: 20px 20px;
+  }
+
+  .users {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+@media(max-width: 500px) {
+  nav {
+    padding: 20px 10px;
+  }
+
+  /* .nav .logo svg {
+    width: 20px;
+    height: 20px;
+  } */
+
+  .nav .logo-text {
+    font-size: 1rem;
+  }
+
+  .users {
+    grid-template-columns: 1fr;
+    text-align: start;
+  }
+
+  .menu-links {
+    width: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .menu-links a {
+    font-size: 1.8rem;
+    padding: 8px 14px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+  }
 }
